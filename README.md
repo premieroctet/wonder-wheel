@@ -376,4 +376,8 @@ Checkout the complete code in this repo:
 - ⚙️ [Particle code](wheel.ino)
 - ⚛️ [React code](/src)
 
+And the video demo:
+
+[![Video](https://img.youtube.com/vi/hQDlTcZH-zk/0.jpg)](https://www.youtube.com/watch?v=hQDlTcZH-zk)
+
 Happy hacking! 🎈
