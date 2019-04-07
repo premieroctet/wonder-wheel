@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Premier Octet" src="https://user-images.githubusercontent.com/1102595/42870156-5973af92-8a77-11e8-8712-7c0a1df6cf94.png">
+<img width="207" alt="image" src="https://user-images.githubusercontent.com/1102595/55682551-7b670a80-5935-11e9-8f2f-1d2ef3de8dc3.png">
 </p>
 
 # Wonder Wheel 🎡
