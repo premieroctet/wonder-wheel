@@ -111,7 +111,7 @@ POWER        3.3V          3.3V # 🚨 Not 5V!
 
 ![PCB](doc/assets/schema.png)
 
-Plug yours female wires throught the headers of both cards. That's all! Your are now ready to set up your Photon.
+Plug yours female wires through the headers of both cards. That's all! Your are now ready to set up your Photon.
 
 ### Set up your Photon
 
