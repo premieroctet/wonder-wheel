@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "particle-api-js": "^7.2.3",
-    "react": "^16.7.0-alpha.0",
-    "react-confetti": "^2.3.0",
-    "react-dom": "^16.7.0-alpha.0",
-    "react-scripts": "2.1.1",
-    "react-sizeme": "^2.5.2",
-    "styled-components": "^4.1.2"
+    "@chakra-ui/react": "^1.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "animate.css": "^4.1.1",
+    "framer-motion": "^2.9.4",
+    "js-levenshtein": "^1.1.6",
+    "particle-api-js": "^9.0.2",
+    "react": "^17.0.1",
+    "react-confetti": "^6.0.0",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.0",
+    "react-sizeme": "^2.6.12",
+    "styled-components": "^4.1.2",
+    "typescript": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,5 +32,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9"
+  }
 }
