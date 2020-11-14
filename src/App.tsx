@@ -1,21 +1,17 @@
 import React from "react"
 import { Box, Center, VStack } from "@chakra-ui/react"
-import Particle from "particle-api-js"
 import Confetti from "react-confetti"
 import "./assets/index.css"
 import "animate.css"
+import useIkeaWheel from "./hooks/useIkeaWheel"
 
-const particle = new Particle()
-
-const DEVICE_ID = process.env.REACT_APP_DEVICE_ID
-const TOKEN = process.env.REACT_APP_PARTICLE_TOKEN
 const SHEET_ID = process.env.REACT_APP_SHEET_ID
 const GOOGLE_SHEET_TOKEN = process.env.REACT_APP_GOOGLE_SHEET_TOKEN
 
 const App = () => {
-  const [isSpinning, setisSpinning] = React.useState(false)
+  const { isSpinning, value } = useIkeaWheel()
+  const [isLoading, setLoading] = React.useState(false)
   const [label, setLabel] = React.useState(null)
-  const [value, setValue] = React.useState(null)
 
   const loadLabels = async () => {
     const data = await fetch(
@@ -26,28 +22,18 @@ const App = () => {
   }
 
   React.useEffect(() => {
-    const initStream = async () => {
-      const stream = await particle.getEventStream({
-        deviceId: DEVICE_ID,
-        auth: TOKEN,
-      })
-
-      stream.on("event", async (event: any) => {
-        if (event.name === "SPINNING") {
-          setisSpinning(true)
-        } else if (event.name === "WHEEL_VALUE") {
-          const values = await loadLabels()
-          const index = parseInt(event.data) - 1
-
-          setisSpinning(false)
-          setValue(event.data)
-          setLabel(values[index] || "-")
-        }
-      })
+    const fetchLabel = async () => {
+      if (value) {
+        setLoading(true)
+        const values = await loadLabels()
+        const index = parseInt(value) - 1
+        setLabel(values[index] || "-")
+        setLoading(false)
+      }
     }
 
-    initStream()
-  }, [])
+    fetchLabel()
+  }, [value])
 
   return (
     <Box color="white" height="100vh" width="100vw">
@@ -56,7 +42,7 @@ const App = () => {
         height="100%"
         backgroundColor="yellow.300"
       >
-        {isSpinning && (
+        {(isSpinning || isLoading) && (
           <Box
             className="animate__animated animate__repeat-2 animate__tada"
             fontSize="10rem"
@@ -67,20 +53,24 @@ const App = () => {
           </Box>
         )}
 
-        {!isSpinning && (
+        {!isSpinning && !isLoading && (
           <>
             {label ? (
               <VStack spacing={-10}>
                 <Box fontWeight="bold" fontSize="6rem">
                   N°{value} 🕺
                 </Box>
-                <Box color="yellow.800" fontSize="10rem">
+                <Box color="yellow.700" fontSize="10rem">
                   {label}
                   <Confetti />
                 </Box>
               </VStack>
             ) : (
-              <Box className="animate__animated animate__tada" fontSize="6rem">
+              <Box
+                color="yellow.700"
+                className="animate__animated animate__tada"
+                fontSize="6rem"
+              >
                 Spin the wheel! 🤸‍♀️
               </Box>
             )}
